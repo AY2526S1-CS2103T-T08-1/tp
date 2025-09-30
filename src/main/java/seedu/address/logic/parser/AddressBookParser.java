@@ -46,7 +46,9 @@ public class AddressBookParser {
         switch (commandWord) {
 
         case RemarkCommand.COMMAND_WORD:
-            return new RemarkCommand();
+            return new RemarkCommandParser().parse(arguments);
+
+
 
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
