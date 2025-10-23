@@ -13,12 +13,19 @@ Class ModelManager
 Class UserPrefs
 
 Class UniquePersonList
+Class UniqueBookingList
 Class Person
 Class Address
 Class Email
 Class Name
 Class Phone
 Class Tag
+Class Booking {
+    isDone : Boolean
+}
+Class Description
+Class DateTime
+Enum PackageType
 
 Class I #FFFFFF
 }
@@ -30,25 +37,43 @@ AddressBook .up.|> ReadOnlyAddressBook
 
 ModelManager .up.|> Model
 Model .right.> ReadOnlyUserPrefs
-Model .left.> ReadOnlyAddressBook
+Model .right.> ReadOnlyAddressBook
 ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
 AddressBook *--> "1" UniquePersonList
-UniquePersonList --> "~* all" Person
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
-Person *--> "*" Tag
+AddressBook *--> "1" UniqueBookingList
+' Collections to entities
+UniqueBookingList -down-> "~* all" Booking
+UniquePersonList -down-> "~* all" Person
 
-Person -[hidden]up--> I
-UniquePersonList -[hidden]right-> I
+' Booking attributes (go down from Booking)
+Booking *-down-> PackageType
+Booking *-down-> Description
+Booking *-down-> DateTime
+Booking *-down-> "*" Tag
+Booking *-down-> Name
 
+' Person attributes (go down from Person)
+Person *-down-> Name
+Person *-down-> Phone
+Person *-down-> Email
+Person *-down-> Address
+Person *-down-> "*" Tag
+
+' ModelManager filtered relationships - go down to avoid crossing
+ModelManager -down-> "~* filtered" Booking
+ModelManager -down-> "~* filtered" Person
+
+' Hidden links to organize bottom tier
+PackageType -[hidden]right-> Description
+Description -[hidden]right-> DateTime
+DateTime -[hidden]right-> Name
 Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+Phone -[hidden]right-> Email
+Email -[hidden]right-> Address
 
-ModelManager --> "~* filtered" Person
+Person -[hidden]up-> I
+UniquePersonList -[hidden]right-> I
 @enduml
