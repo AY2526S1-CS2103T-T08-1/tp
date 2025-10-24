@@ -1,206 +1,370 @@
+# InSight User Guide
+
+> **Version:** 1.0  
+> **Built for:** Creative professionals (photographers, videographers, and media freelancers)  
+> **Based on:** SE-EDU AddressBook Level 3
+
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+![Ui.png](images/Ui.png)
+## 📖 Table of Contents
+1. [Quick Start](#-quick-start)
+2. [Command Reference](#-command-reference)
+3. [Features](#-features)
+4. [Glossary](#-glossary)
+5. [Saving the Data](#-saving-the-data)
+6. [FAQ](#-faq)
+7. [Known Issues](#-known-issues)
+
 ---
 
-# AB-3 User Guide
+## ⚡ Quick-Start
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+1. Ensure **Java 17** or above is installed on your computer.
+2. Download the latest `.jar` file from [InSight Releases](https://github.com/se-edu/addressbook-level3/releases).
+3. Copy the file to your preferred folder.
+4. Open a terminal and run:
+   ```bash
+   java -jar insight.jar
+   ```
+5. Use commands such as `help`, `list`, or `add` to begin.
 
-<!-- * Table of Contents -->
-<page-nav-print />
+> 💡 **Tip:** Refer to the [Features](#-features) section for detailed examples of each command.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
-## Quick start
+## 💻 Command Reference
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+| Command         | Description                                                                                                                                                                                          |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `add`           | Adds a person to InSight. <br/> Parameters: `n/NAME p/PHONE e/EMAIL s/STATUS [a/ADDRESS] [t/TAG]` <br/> Example: `add n/John Doe p/98765432 e/johnd@example.com s/PROSPECT a/311, Clementi Ave`      |
+| `addbooking`    | Adds a booking to InSight. <br/> Parameters: `INDEX d/DESCRIPTION dt/dd/mm/yyyy HHmm p/PACKAGE t/TAG` <br/> Example: `addbooking 1 d/Wedding Shoot dt/14/10/2025 1200 p/PORTRAIT t/outdoor t/summer` |
+| `list`          | Lists all clients <br/> Example: `list`                                                                                                                                                              |
+| `listbooking`   | Lists all bookings <br/> Lists all bookings within InSight. <br/> Example: `listbooking`                                                                                                             |
+| `markbooking`   | Marks a booking as 'Paid'. <br/> Parameters: `INDEX` <br/> Example: `markbooking 1`                                                                                                                  |
+| `unmarkbooking` | Unmarks a booking as 'Not Paid'. <br/> Parameters: `INDEX`   <br/> Example: `unmarkbooking 1`                                                                                                        |
+| `edit`          | Edits client details. <br/> Parameters: `INDEX [n/NAME] [p/PHONE] [e/EMAIL] [s/STATUS] [a/ADDRESS] [t/TAG]` <br/> Example: `edit 1 p/91234567 e/johndoe@example.com`                                 |
+| `editbooking`   | Edits booking details. <br/> Parameters: `INDEX [d/DESCRIPTION] [dt/DATETIME] [p/PACKAGE] [t/TAG]`  <br/> Example: `editbooking 1 d/Wedding Shoot p/WEDDING`                                         |
+| `delete`        | Deletes a client. <br/> Parameters: `INDEX`  <br/> Example: `delete 1`                                                                                                                               |
+| `deletebooking` | Deletes a booking. <br/> Parameters: `INDEX` <br/> Example: `deletebooking 1`                                                                                                                        |
+| `find`          | Finds clients by name or status. <br/> Parameters: `name + [name1 name2…]` or `status + [status1 status2…].  <br/> Examples . `find name alice bob . `find status active returning`                  |
+| `viewbooking`   | Displays all bookings for a specific client.<br/> Parameters: `INDEX` <br/> Example: `viewbooking 1`                                                                                                 |
+| `sort`          | Sorts clients lexicographically.   <br/> Example: `sort`                                                                                                                                             |
+| `sortbooking`   | Sorts bookings by date and time.   <br/> Example: `sortbooking`                                                                                                                                      |
+| `clear`         | Clears all data from InSight. <br/> Example: `clear`                                                                                                                                                 |
+| `help`          | Displays help information. <br/> Example: `help`                                                                                                                                                     |
+| `exit`          | Exits InSight. <br/>  Example: `exit`                                                                                                                                                                |
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+---
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+## 🧭 Features
+- Refer to the glossary for terms you are unsure of.  
+- For the list of appropriate status fields, refer [here](#1-client-status).  
+- For more information about the INDEX, refer [here](#5-indexing).  
+- If you are unclear on the formatting of the date time field, refer [here](#4-date--time-format).  
+- For the list of appropriate package types, refer [here](#2-package-types).  
+- For more information about the tag, refer [here](#3-tag-keywords).
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+### Adding a person: add
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+Adds a person (client) to InSight.
 
-   * `list` : Lists all contacts.
+**Format:**  
+`add n/NAME p/PHONE e/EMAIL s/STATUS [a/ADDRESS] [t/TAG]…`
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+💡 **Tip:** A client can have any number of tags (including 0).
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+The status field (e.g., PROSPECT, ACTIVE, RETURNING) helps classify clients by engagement level.
 
-   * `clear` : Deletes all contacts.
+**Examples:**  
+`add n/John Doe p/98765432 e/johnd@example.com s/PROSPECT a/311, Clementi Ave t/wedding`  
+`add n/Betsy Crowe t/friend e/betsycrowe@example.com s/ACTIVE a/Newgate Prison p/1234567 t/portrait`
+![add.png](images/add.png)
 
-   * `exit` : Exits the app.
+### Adding a booking: addbooking
 
-1. Refer to the [Features](#features) below for details of each command.
+Adds a booking to a specific client in InSight.
 
---------------------------------------------------------------------------------------------------------------------
+**Format:**  
+`addbooking INDEX d/DESCRIPTION dt/dd/mm/yyyy HHmm p/PACKAGE [t/TAG]…`
 
-## Features
+**Notes:**
+- The INDEX refers to the client’s index in the displayed list.
+- Each booking is tied to a client entry.
+- Tags can represent the booking type, theme, or location.
 
-<box type="info" seamless>
+**Examples:**  
+`addbooking 1 d/Wedding Shoot dt/14/10/2025 1200 p/PORTRAIT t/outdoor t/summer`  
+`addbooking 2 d/Product Photoshoot dt/10/09/2025 1600 p/CORPORATE t/studio`
 
-**Notes about the command format:**<br>
+![addBooking.png](images/addBooking.png)
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+### Listing all clients: list
 
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+Shows a list of all clients stored in InSight.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+**Format:**  
+`list`
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+**Example:**  
+`list`
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+### Listing all bookings: listbooking
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+Displays all bookings stored in InSight.
 
-### Viewing help : `help`
+**Format:**  
+`listbooking`
 
-Shows a message explaining how to access the help page.
+**Example:**  
+`listbooking`
 
-![help message](images/helpMessage.png)
+### Marking a booking as paid: markbooking
 
-Format: `help`
+Marks a booking as Paid.
 
+**Format:**  
+`markbooking INDEX`
 
-### Adding a person: `add`
+**Notes:**  
+The INDEX refers to the booking number displayed in the booking list. This helps users track completed or settled payments.
 
-Adds a person to the address book.
+**Example:**  
+`markbooking 1`
+![markbooking.png](images/markbooking.png)
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+### Unmarking a booking as unpaid: unmarkbooking
 
-<box type="tip" seamless>
+Marks a booking as Not Paid.
 
-**Tip:** A person can have any number of tags (including 0)
-</box>
+**Format:**  
+`unmarkbooking INDEX`
 
-Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+**Example:**  
+`unmarkbooking 2`
+![unmarkbooking.png](images/unmarkbooking.png)
 
-### Listing all persons : `list`
+### Editing a client: edit
 
-Shows a list of all persons in the address book.
+Edits details of a client in InSight.
 
-Format: `list`
+**Format:**  
+`edit INDEX n/NAME p/PHONE e/EMAIL s/STATUS [a/ADDRESS] [t/TAG]…`
 
-### Editing a person : `edit`
+**Notes:**
+- The INDEX refers to the client’s position in the displayed list.
+- At least one optional field must be provided.
+- Editing tags will overwrite previous tags.
+- To remove all tags, type `t/` without specifying any tag.
 
-Edits an existing person in the address book.
+**Examples:**  
+`edit 1 p/91234567 e/johndoe@example.com`  
+`edit 2 n/Betsy Crower s/RETURNING t/`
+![editPerson.png](images/editPerson.png)
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+### Editing a booking: editbooking
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+Edits details of an existing booking.
 
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+**Format:**  
+`editbooking INDEX d/DESCRIPTION dt/DATETIME p/PACKAGE [t/TAG]…`
 
-### Locating persons by name: `find`
+**Notes:**
+- The INDEX refers to the booking index in the booking list.
+- You can update multiple fields at once.
+- To clear all tags, type `t/` without specifying any.
 
-Finds persons whose names contain any of the given keywords.
+**Examples:**  
+`editbooking 1 d/Wedding Shoot p/WEDDING`  
+`editbooking 2 dt/21/09/2025 1600 t/sunset`
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+### Deleting a client: delete
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+Deletes a client from the InSight database.
 
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+**Format:**  
+`delete INDEX`
 
-### Deleting a person : `delete`
+**Notes:**
+- Deletes the client at the specified index from the client list.
+- All related bookings remain in the system unless deleted manually.
 
-Deletes the specified person from the address book.
+**Examples:**  
+`list` followed by `delete 2` deletes the second client in the list.  
+`find Betsy` followed by `delete 1` deletes the first client in the search results.
 
-Format: `delete INDEX`
+### Deleting a booking: deletebooking
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+Deletes a booking record from InSight.
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+**Format:**  
+`deletebooking INDEX`
 
-### Clearing all entries : `clear`
+**Example:**  
+`deletebooking 1`
 
-Clears all entries from the address book.
+### Finding clients: find
 
-Format: `clear`
+Finds clients whose names or statuses match the given keywords.
 
-### Exiting the program : `exit`
+**Format:**  
+`find name KEYWORD [MORE_KEYWORDS]`  
+or  
+`find status STATUS [MORE_STATUSES]`
 
-Exits the program.
+**Notes:**
+- Search is case-insensitive.
+- The order of keywords does not matter.
+- Supports partial matching for status searches.
+- Returns any client matching one or more keywords (OR search).
 
-Format: `exit`
+**Examples:**  
+`find name alice bob charlie`  
+`find status active returning`
+![findStatus.png](images/findStatus.png)
 
-### Saving the data
+### Viewing all bookings for a client: viewbooking
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Displays all bookings associated with a selected client.
 
-### Editing the data file
+**Format:**  
+`viewbooking INDEX`
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+**Notes:**  
+The INDEX refers to the client’s index. Use this command to view all bookings tied to a specific person.
 
-<box type="warning" seamless>
+**Example:**  
+`viewbooking 1`
+![viewBooking.png](images/viewBooking.png)
 
-**Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
+### Sorting clients: sort
 
-### Archiving data files `[coming in v2.0]`
+Sorts clients alphabetically by name.
 
-_Details coming soon ..._
+**Format:**  
+`sort`
 
---------------------------------------------------------------------------------------------------------------------
+**Example:**  
+`sort`
+![sort.png](images/sort.png)
 
-## FAQ
+### Sorting bookings: sortbooking
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+Sorts all bookings by date and time.
 
---------------------------------------------------------------------------------------------------------------------
+**Format:**  
+`sortbooking`
 
-## Known issues
+**Example:**  
+`sortbooking`
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+### Clearing all data: clear
 
---------------------------------------------------------------------------------------------------------------------
+Clears all clients and bookings from InSight.
 
-## Command summary
+**Format:**  
+`clear`
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+**Example:**  
+`clear`
+
+### Viewing help: help
+
+Shows usage instructions and available commands.
+
+**Format:**  
+`help`
+
+**Example:**  
+`help`
+![help.png](images/help.png)
+
+### Exiting the program: exit
+
+Closes the InSight application.
+
+**Format:**  
+`exit`
+
+**Example:**  
+`exit`
+
+---
+
+## 📚 Glossary
+
+### 1. Client Status
+
+
+| Status    | Meaning                                                                        | Typical Use Case                                       |
+|-----------|--------------------------------------------------------------------------------|--------------------------------------------------------|
+| PROSPECT  | A potential client who has expressed interest but not confirmed a booking yet. | New lead from social media, email, or inquiry form.    |
+| ACTIVE    | A current client with one or more ongoing or upcoming bookings.                | Client with a confirmed event or ongoing project.      |
+| RETURNING | A past client who has returned for additional services.                        | Repeat customer booking a new shoot or event.          |
+| COMPLETED | A client whose project(s) have been completed and delivered.                   | Finished work, awaiting feedback or testimonial.       |
+| INACTIVE  | A client who has not engaged for a long period or has opted out.               | Dormant contacts for archiving or marketing reference. |
+
+### 2. Package Types
+
+| Package Type | Description                                                                         | Example Use Case                                |
+|--------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
+| WEDDING      | Full wedding photography or videography coverage, often spanning multiple sessions. | `editbooking 1 p/WEDDING`                       |
+| PORTRAIT     | Individual, couple, or family portraits conducted in studio or outdoor settings.    | `addbooking 1 d/Graduation Shoot p/PORTRAIT`    |
+| COMMERCIAL   | Product, branding, or corporate-related shoots.                                     | `addbooking 2 d/Product Launch p/COMMERCIAL`    |
+| EVENT        | Coverage of public/private events (birthdays, conferences).                         | `addbooking 3 d/Company Dinner p/EVENT`         |
+| LIFESTYLE    | Candid or aesthetic sessions capturing daily activities.                            | `addbooking 1 d/Instagram Campaign p/LIFESTYLE` |
+| MATERNITY    | Shoots for expecting mothers/families.                                              | `addbooking 2 d/Maternity Portrait p/MATERNITY` |
+| TRAVEL       | Destination shoots involving travel logistics.                                      | `addbooking 1 d/Pre-Wedding in Bali p/TRAVEL`   |
+| CUSTOM       | Flexible or hybrid requests not fitting standard categories.                        | `addbooking 2 d/Studio & Drone Shoot p/CUSTOM`  |
+
+
+### 3. Tag Keywords
+
+| Tag       | Meaning                      | Example       |
+|-----------|------------------------------|---------------|
+| outdoor   | Shoot conducted outdoors     | `t/outdoor`   |
+| studio    | Conducted in indoor settings | `t/studio`    |
+| priority  | VIP or urgent booking        | `t/priority`  |
+| editing   | Workflow in post-production  | `t/editing`   |
+| delivered | Work delivered to client     | `t/delivered` |
+
+### 4. Date & Time Format
+
+All bookings use the datetime format:  
+`dt/dd/mm/yyyy HHmm`
+
+**Example:**  
+`dt/14/10/2025 1200` → October 14, 2025, at 12:00 PM.
+
+### 5. Indexing
+
+The INDEX parameter refers to the numeric position of an entry (client or booking) in the currently displayed list.
+
+**Example:**  
+`edit 1` edits the first client.  
+`editbooking 2` edits the second booking shown in the list.
+
+---
+
+## 💾 Saving the Data
+
+InSight automatically saves all changes to disk after each command. No manual saving is required.
+
+
+---
+
+## ❔ FAQ
+
+**Q:** How do I transfer data to another computer?  
+**A:** Copy the data file from the source folder into the target folder and restart InSight.
+> 💡 **Tip:** To migrate data, copy the `.json` file from your home directory to another device.
+
+---
+
+## ⚠️ Known Issues
+
+- Moving the GUI to another monitor may cause positioning errors on reopen.
+- If the Help Window is minimized, running `help` again will not reopen it automatically.
+
+---
+
+> © 2025 InSight Team. Built upon SE-EDU AddressBook Level 3.
