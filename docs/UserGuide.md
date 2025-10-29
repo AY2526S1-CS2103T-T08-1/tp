@@ -11,7 +11,6 @@
 > **Based on:** SE-EDU AddressBook Level 3
 
 ---
-![Ui.png](images/Ui.png)
 ## 📖 Table of Contents
 1. [Quick Start](#-quick-start)
 2. [Command Reference](#-command-reference)
@@ -28,11 +27,18 @@
 1. Ensure **Java 17** or above is installed on your computer.
 2. Download the latest `.jar` file from [InSight Releases](https://github.com/se-edu/addressbook-level3/releases).
 3. Copy the file to your preferred folder.
-4. Open a terminal and run:
+4. Open a terminal, `cd` into the folder you put the jar file in and run:
    ```bash
    java -jar insight.jar
    ```
-5. Use commands such as `help`, `list`, or `add` to begin.
+   you will then see a GUI will some sample data as follow:
+   ![Ui.png](images/Ui.png)
+5. Type in the commands such as `help`, `list`, or `add` to begin.
+>Some examples:<br/>
+> `help`: Display available commands.<br/>
+> `list`: List all clients.<br/>
+> `add n/John Doe p/98765432 e/johnd@example.com s/PROSPECT a/311, Clementi Ave`: Adds a client named `John Doe` to Insight.
+
 
 > 💡 **Tip:** Refer to the [Features](#-features) section for detailed examples of each command.
 
@@ -40,37 +46,38 @@
 
 ## 💻 Command Reference
 
-| Command         | Description                                                                                                                                                                                          |
-|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `add`           | Adds a person to InSight. <br/> Parameters: `n/NAME p/PHONE e/EMAIL s/STATUS [a/ADDRESS] [t/TAG]` <br/> Example: `add n/John Doe p/98765432 e/johnd@example.com s/PROSPECT a/311, Clementi Ave`      |
-| `addbooking`    | Adds a booking to InSight. <br/> Parameters: `INDEX d/DESCRIPTION dt/dd/mm/yyyy HHmm p/PACKAGE t/TAG` <br/> Example: `addbooking 1 d/Wedding Shoot dt/14/10/2025 1200 p/PORTRAIT t/outdoor t/summer` |
-| `list`          | Lists all clients <br/> Example: `list`                                                                                                                                                              |
-| `listbooking`   | Lists all bookings <br/> Lists all bookings within InSight. <br/> Example: `listbooking`                                                                                                             |
-| `markbooking`   | Marks a booking as 'Paid'. <br/> Parameters: `INDEX` <br/> Example: `markbooking 1`                                                                                                                  |
-| `unmarkbooking` | Unmarks a booking as 'Not Paid'. <br/> Parameters: `INDEX`   <br/> Example: `unmarkbooking 1`                                                                                                        |
-| `edit`          | Edits client details. <br/> Parameters: `INDEX [n/NAME] [p/PHONE] [e/EMAIL] [s/STATUS] [a/ADDRESS] [t/TAG]` <br/> Example: `edit 1 p/91234567 e/johndoe@example.com`                                 |
-| `editbooking`   | Edits booking details. <br/> Parameters: `INDEX [d/DESCRIPTION] [dt/DATETIME] [p/PACKAGE] [t/TAG]`  <br/> Example: `editbooking 1 d/Wedding Shoot p/WEDDING`                                         |
-| `delete`        | Deletes a client. <br/> Parameters: `INDEX`  <br/> Example: `delete 1`                                                                                                                               |
-| `deletebooking` | Deletes a booking. <br/> Parameters: `INDEX` <br/> Example: `deletebooking 1`                                                                                                                        |
-| `find`          | Finds clients by name or status. <br/> Parameters: `name + [name1 name2…]` or `status + [status1 status2…].  <br/> Examples . `find name alice bob . `find status active returning`                  |
-| `viewbooking`   | Displays all bookings for a specific client.<br/> Parameters: `INDEX` <br/> Example: `viewbooking 1`                                                                                                 |
-| `sort`          | Sorts clients lexicographically.   <br/> Example: `sort`                                                                                                                                             |
-| `sortbooking`   | Sorts bookings by date and time.   <br/> Example: `sortbooking`                                                                                                                                      |
-| `clear`         | Clears all data from InSight. <br/> Example: `clear`                                                                                                                                                 |
-| `help`          | Displays help information. <br/> Example: `help`                                                                                                                                                     |
-| `exit`          | Exits InSight. <br/>  Example: `exit`                                                                                                                                                                |
+| Command         | Description                                                                                      | Example                                                                         |
+|-----------------|--------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| `add`           | Adds a person to InSight. <br/> Parameters: `n/NAME p/PHONE e/EMAIL s/STATUS [a/ADDRESS] [t/TAG]` | `add n/John Doe p/98765432 e/johnd@example.com s/PROSPECT a/311, Clementi Ave`  |
+| `addbooking`    | Adds a booking to InSight. <br/> Parameters: `INDEX d/DESCRIPTION dt/dd/mm/yyyy HHmm p/PACKAGE t/TAG`| `addbooking 1 d/Wedding Shoot dt/14/10/2025 1200 p/PORTRAIT t/outdoor t/summer` |
+| `list`          | Lists all clients <br/> | `list`                                                                          |
+| `listbooking`   | Lists all bookings within InSight. | `listbooking`                                                                   |
+| `markbooking`   | Marks a booking as 'Paid'. <br/> Parameters: `INDEX` | `markbooking 1`                                                                 |
+| `unmarkbooking` | Unmarks a booking as 'Not Paid'. <br/> Parameters: `INDEX`  | `unmarkbooking 1`                                                               |
+| `edit`          | Edits client details. <br/> Parameters: `INDEX [n/NAME] [p/PHONE] [e/EMAIL] [s/STATUS] [a/ADDRESS] [t/TAG]` | `edit 1 p/91234567 e/johndoe@example.com`                                       |
+| `editbooking`   | Edits booking details. <br/> Parameters: `INDEX [d/DESCRIPTION] [dt/DATETIME] [p/PACKAGE] [t/TAG]` | `editbooking 1 d/Wedding Shoot p/WEDDING`                                       |
+| `delete`        | Deletes a client. <br/> Parameters: `INDEX` | `delete 1`                                                                      |
+| `deletebooking` | Deletes a booking. <br/> Parameters: `INDEX` | `deletebooking 1`                                                               |
+| `find`          | Finds clients by name or status. <br/> Parameters: `name + [name1 name2…]` or `status + [status1 status2…].` | `find name alice bob`, <br/> `find status active returning`                     |
+| `viewbooking`   | Displays all bookings for a specific client.<br/> Parameters: `INDEX` | `viewbooking 1`                                                                 |
+| `sort`          | Sorts clients lexicographically. | `sort`                                                                          |
+| `sortbooking`   | Sorts bookings by date and time.  | `sortbooking`                                                                   |
+| `clear`         | Clears all data from InSight. | `clear`                                                                         |
+| `help`          | Displays help information. | `help`                                                                          |
+| `exit`          | Exits InSight. |  `exit`                                                                         |
 
 ---
 
 ## 🧭 Features
 - Refer to the glossary for terms you are unsure of.  
-- For the list of appropriate status fields, refer [here](#1-client-status).  
-- For more information about the INDEX, refer [here](#5-indexing).  
-- If you are unclear on the formatting of the date time field, refer [here](#4-date--time-format).  
+- For the list of appropriate status fields, refer [here](#1-client-status).
 - For the list of appropriate package types, refer [here](#2-package-types).  
-- For more information about the tag, refer [here](#3-tag-keywords).
+- For more information about the booking tag, refer [here](#3-tag-keywords).
+- For more information about the client tag, refer [here](#4-client-tag).
+- If you are unclear on the formatting of the date time field, refer [here](#5-date--time-format).
+- For more information about the INDEX, refer [here](#6-indexing).
 
-### Adding a person: add
+### Adding a person: `add`
 
 Adds a person (client) to InSight.
 
@@ -333,7 +340,14 @@ Closes the InSight application.
 | editing   | Workflow in post-production  | `t/editing`   |
 | delivered | Work delivered to client     | `t/delivered` |
 
-### 4. Date & Time Format
+### 4. Client Tag
+| Tag       | Meaning                                                                               | Example       |
+|-----------|---------------------------------------------------------------------------------------|---------------|
+| personal  | The client usually have booking in person                                             | `t/personal`  |
+| comercial | The client is the contact person got buisiness order, such as a company advertisement | `t/comercial` |
+| group     | A group of clients with                                                               | `t/group`     |
+
+### 5. Date & Time Format
 
 All bookings use the datetime format:  
 `dt/dd/mm/yyyy HHmm`
@@ -341,7 +355,7 @@ All bookings use the datetime format:
 **Example:**  
 `dt/14/10/2025 1200` → October 14, 2025, at 12:00 PM.
 
-### 5. Indexing
+### 6. Indexing
 
 The INDEX parameter refers to the numeric position of an entry (client or booking) in the currently displayed list.
 
