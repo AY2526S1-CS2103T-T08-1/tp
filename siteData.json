@@ -104,6 +104,7 @@
     },
     {
       "src": "UserGuide.md",
+      "title": "InSight User Guide",
       "headings": {
         "insight-user-guide": "InSight User Guide",
         "table-of-contents": "📖 Table of Contents",
