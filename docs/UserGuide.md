@@ -72,10 +72,9 @@
 - Refer to the glossary for terms you are unsure of.  
 - For the list of appropriate status fields, refer [here](#1-client-status).
 - For the list of appropriate package types, refer [here](#2-package-types).  
-- For more information about the booking tag, refer [here](#3-tag-keywords).
-- For more information about the client tag, refer [here](#4-client-tag).
-- If you are unclear on the formatting of the date time field, refer [here](#5-date--time-format).
-- For more information about the INDEX, refer [here](#6-indexing).
+- For more information about the tag, refer [here](#3-tag-keywords).
+- If you are unclear on the formatting of the date time field, refer [here](#4-date--time-format).
+- For more information about the INDEX, refer [here](#5-indexing).
 
 ### Adding a person: `add`
 
@@ -90,7 +89,7 @@ The status field (e.g., PROSPECT, ACTIVE, RETURNING) helps classify clients by e
 
 **Examples:**  
 `add n/John Doe p/98765432 e/johnd@example.com s/PROSPECT a/311, Clementi Ave t/personal`  
-`add n/Betsy Crowe t/friend e/betsycrowe@example.com s/ACTIVE a/Newgate Prison p/1234567 t/group`
+`add n/Betsy Crowe e/betsycrowe@example.com s/ACTIVE a/Newgate Prison p/1234567 t/group t/friend `
 ![add.png](images/addclient.png)
 
 ### Adding a booking: `addbooking`
@@ -332,6 +331,11 @@ Closes the InSight application.
 
 ### 3. Tag Keywords
 
+This part allows users to specify the meaning of each tag, as tag clients and bookings accordingly.<bar/>
+Here are some example tags:
+
+booking tag
+
 | Tag       | Meaning                      | Example       |
 |-----------|------------------------------|---------------|
 | outdoor   | Shoot conducted outdoors     | `t/outdoor`   |
@@ -339,15 +343,15 @@ Closes the InSight application.
 | priority  | VIP or urgent booking        | `t/priority`  |
 | editing   | Workflow in post-production  | `t/editing`   |
 | delivered | Work delivered to client     | `t/delivered` |
+client tag
 
-### 4. Client Tag
 | Tag       | Meaning                                                                               | Example       |
 |-----------|---------------------------------------------------------------------------------------|---------------|
 | personal  | The client usually have booking in person                                             | `t/personal`  |
 | comercial | The client is the contact person got buisiness order, such as a company advertisement | `t/comercial` |
 | group     | A group of clients with                                                               | `t/group`     |
 
-### 5. Date & Time Format
+### 4. Date & Time Format
 
 All bookings use the datetime format:  
 `dt/dd/mm/yyyy HHmm`
@@ -355,7 +359,7 @@ All bookings use the datetime format:
 **Example:**  
 `dt/14/10/2025 1200` → October 14, 2025, at 12:00 PM.
 
-### 6. Indexing
+### 5. Indexing
 
 The INDEX parameter refers to the numeric position of an entry (client or booking) in the currently displayed list.
 
