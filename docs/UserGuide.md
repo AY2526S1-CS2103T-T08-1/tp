@@ -89,11 +89,11 @@ Adds a person (client) to InSight.
 The status field (e.g., PROSPECT, ACTIVE, RETURNING) helps classify clients by engagement level.
 
 **Examples:**  
-`add n/John Doe p/98765432 e/johnd@example.com s/PROSPECT a/311, Clementi Ave t/wedding`  
-`add n/Betsy Crowe t/friend e/betsycrowe@example.com s/ACTIVE a/Newgate Prison p/1234567 t/portrait`
-![add.png](images/add.png)
+`add n/John Doe p/98765432 e/johnd@example.com s/PROSPECT a/311, Clementi Ave t/personal`  
+`add n/Betsy Crowe t/friend e/betsycrowe@example.com s/ACTIVE a/Newgate Prison p/1234567 t/group`
+![add.png](images/addclient.png)
 
-### Adding a booking: addbooking
+### Adding a booking: `addbooking`
 
 Adds a booking to a specific client in InSight.
 
@@ -111,7 +111,7 @@ Adds a booking to a specific client in InSight.
 
 ![addBooking.png](images/addBooking.png)
 
-### Listing all clients: list
+### Listing all clients: `list`
 
 Shows a list of all clients stored in InSight.
 
@@ -121,7 +121,7 @@ Shows a list of all clients stored in InSight.
 **Example:**  
 `list`
 
-### Listing all bookings: listbooking
+### Listing all bookings: `listbooking`
 
 Displays all bookings stored in InSight.
 
@@ -131,7 +131,7 @@ Displays all bookings stored in InSight.
 **Example:**  
 `listbooking`
 
-### Marking a booking as paid: markbooking
+### Marking a booking as paid: `markbooking`
 
 Marks a booking as Paid.
 
@@ -145,7 +145,7 @@ The INDEX refers to the booking number displayed in the booking list. This helps
 `markbooking 1`
 ![markbooking.png](images/markbooking.png)
 
-### Unmarking a booking as unpaid: unmarkbooking
+### Unmarking a booking as unpaid: `unmarkbooking`
 
 Marks a booking as Not Paid.
 
@@ -156,7 +156,7 @@ Marks a booking as Not Paid.
 `unmarkbooking 2`
 ![unmarkbooking.png](images/unmarkbooking.png)
 
-### Editing a client: edit
+### Editing a client: `edit`
 
 Edits details of a client in InSight.
 
@@ -174,7 +174,7 @@ Edits details of a client in InSight.
 `edit 2 n/Betsy Crower s/RETURNING t/`
 ![editPerson.png](images/editPerson.png)
 
-### Editing a booking: editbooking
+### Editing a booking: `editbooking`
 
 Edits details of an existing booking.
 
@@ -190,7 +190,7 @@ Edits details of an existing booking.
 `editbooking 1 d/Wedding Shoot p/WEDDING`  
 `editbooking 2 dt/21/09/2025 1600 t/sunset`
 
-### Deleting a client: delete
+### Deleting a client: `delete`
 
 Deletes a client from the InSight database.
 
@@ -205,7 +205,7 @@ Deletes a client from the InSight database.
 `list` followed by `delete 2` deletes the second client in the list.  
 `find Betsy` followed by `delete 1` deletes the first client in the search results.
 
-### Deleting a booking: deletebooking
+### Deleting a booking: `deletebooking`
 
 Deletes a booking record from InSight.
 
@@ -215,7 +215,7 @@ Deletes a booking record from InSight.
 **Example:**  
 `deletebooking 1`
 
-### Finding clients: find
+### Finding clients: `find`
 
 Finds clients whose names or statuses match the given keywords.
 
@@ -235,7 +235,7 @@ or
 `find status active returning`
 ![findStatus.png](images/findStatus.png)
 
-### Viewing all bookings for a client: viewbooking
+### Viewing all bookings for a client: `viewbooking`
 
 Displays all bookings associated with a selected client.
 
@@ -249,7 +249,7 @@ The INDEX refers to the client’s index. Use this command to view all bookings 
 `viewbooking 1`
 ![viewBooking.png](images/viewBooking.png)
 
-### Sorting clients: sort
+### Sorting clients: `sort`
 
 Sorts clients alphabetically by name.
 
@@ -260,7 +260,7 @@ Sorts clients alphabetically by name.
 `sort`
 ![sort.png](images/sort.png)
 
-### Sorting bookings: sortbooking
+### Sorting bookings: `sortbooking`
 
 Sorts all bookings by date and time.
 
@@ -270,7 +270,7 @@ Sorts all bookings by date and time.
 **Example:**  
 `sortbooking`
 
-### Clearing all data: clear
+### Clearing all data: `clear`
 
 Clears all clients and bookings from InSight.
 
@@ -280,7 +280,7 @@ Clears all clients and bookings from InSight.
 **Example:**  
 `clear`
 
-### Viewing help: help
+### Viewing help: `help`
 
 Shows usage instructions and available commands.
 
@@ -291,7 +291,7 @@ Shows usage instructions and available commands.
 `help`
 ![help.png](images/help.png)
 
-### Exiting the program: exit
+### Exiting the program: `exit`
 
 Closes the InSight application.
 
