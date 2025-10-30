@@ -60,11 +60,12 @@ Person *-down-> Name
 Person *-down-> Phone
 Person *-down-> Email
 Person *-down-> Address
+Person *-down-> Status
 Person *-down-> "*" Tag
 
 ' ModelManager filtered relationships - go down to avoid crossing
-ModelManager -down-> "~* filtered" Booking
-ModelManager -down-> "~* filtered" Person
+ModelManager -down-> "~* modified" Booking
+ModelManager -down-> "~* modified" Person
 
 ' Hidden links to organize bottom tier
 PackageType -[hidden]right-> Description
