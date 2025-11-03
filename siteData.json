@@ -133,7 +133,6 @@
     },
     {
       "src": "UserGuide.md",
-      "title": "User Guide",
       "headings": {
         "insight-user-guide": "InSight User Guide",
         "introduction": "📚 Introduction",
@@ -144,6 +143,7 @@
         "booking-management-commands": "Booking Management Commands",
         "general-commands": "General Commands",
         "features": "🧭 Features",
+        "conventions": "Conventions",
         "adding-a-client-add": "Adding a Client: add",
         "adding-a-booking-addbooking": "Adding a booking: addbooking",
         "listing-all-clients-list": "Listing all clients: list",
