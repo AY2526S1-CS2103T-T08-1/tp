@@ -44,7 +44,7 @@ UniquePersonList -[hidden]down-> "~* all" Person
 UniquePersonList -down-> "~* all" Person
 UniquePersonList -[hidden]down-> Booking
 
-Booking "*"-right-> "1" Person
+Booking "*"-right--> "1" Person
 note right of Booking
   A Booking object is created based
   on an existing Person object.
@@ -52,11 +52,6 @@ note right of Booking
   but does not keep a direct reference to the Person.
 end note
 
-
-' ModelManager filtered relationships - go down to avoid crossing
-
-
-ModelManager -[hidden]down-> "~* modified" Person
 ModelManager -down-> "~* modified" Person
 ModelManager --> "~* modified" Booking
 

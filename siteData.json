@@ -136,8 +136,9 @@
       "headings": {
         "insight-user-guide": "InSight User Guide",
         "introduction": "📚 Introduction",
+        "introduction-2": "Introduction",
         "table-of-contents": "📖 Table of Contents",
-        "quick-start": "⚡ Quick-Start",
+        "quick-start": "⚡ Quick Start",
         "command-reference": "💻 Command Reference",
         "client-management-commands": "Client Management Commands",
         "booking-management-commands": "Booking Management Commands",
