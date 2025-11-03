@@ -4,19 +4,42 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-AddressBook *-right-> "1" UniquePersonList
-AddressBook *-right-> "1" UniqueBookingList
-UniqueBookingList -[hidden]down- UniquePersonList
-UniqueBookingList -[hidden]down- UniquePersonList
+Class Person
+Class Booking {
+  +isPaid : boolean
+}
+Class Address
+Class Email
+Class Name
+Class Phone
+Class Tag
+Class Description
+Class DateTime
+Enum "<<enumeration>>\nPackageType" as PackageType
+Enum "<<enumeration>>\nStatus" as Status
 
-UniqueBookingList -right-> "*" Tag
-UniquePersonList -right-> Person
 
-Person -up-> "*" Tag
 
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
-Person *--> Status
+' Person attributes (go down from Person)
+Person *-up->"1" Name
+Person *-left->"1" Phone
+Person *-left->"1" Email
+Person *-left->"1" Address
+Person *-down->"1" Status
+Person *-down->"*" Tag
+Booking "*"-left->"1" Person
+
+Booking *-down->"1" PackageType
+Booking *-up->"1" Description
+Booking *-right->"1" DateTime
+Booking *-down->"*" Tag
+Booking *-up->"1" Name
+
+Phone -[hidden]down-> Address
+Address -[hidden]down-> Email
+Email -[hidden]down-> Status
+
+Description -[hidden]down-> DateTime
+DateTime -[hidden]down-> PackageType
+Name -[hidden]down-> Tag
 @enduml

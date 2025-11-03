@@ -35,7 +35,7 @@ UiManager -down-> "1" MainWindow
 MainWindow *-down->  "1" CommandBox
 MainWindow *-down-> "1" ResultDisplay
 MainWindow *-down-> "1" PersonListPanel
-MainWindow *-down-> "1" BookingListPanel
+MainWindow *-right-> "1" BookingListPanel
 MainWindow *-down-> "1" StatusBarFooter
 MainWindow --> "0..1" HelpWindow
 
@@ -49,11 +49,15 @@ CommandBox --|> UiPart
 PersonListPanel --|> UiPart
 BookingListPanel --|> UiPart
 PersonCard --|> UiPart
+BookingCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
 
+
+
 PersonCard ..> Model
 BookingCard ..> Model
+BookingCard .[hidden].> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
@@ -63,6 +67,8 @@ BookingListPanel -[hidden]left- HelpWindow
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter
+PersonListPanel -[hidden]right- BookingListPanel
+PersonCard -[hidden]right- BookingCard
 
 MainWindow -[hidden]-|> UiPart
 @enduml

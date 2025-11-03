@@ -3,6 +3,7 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
+scale 1.3
 
 Package Model as ModelPackage <<Rectangle>>{
 Class "<<interface>>\nReadOnlyAddressBook" as ReadOnlyAddressBook
@@ -15,17 +16,7 @@ Class UserPrefs
 Class UniquePersonList
 Class UniqueBookingList
 Class Person
-Class Address
-Class Email
-Class Name
-Class Phone
-Class Tag
-Class Booking {
-    isDone : Boolean
-}
-Class Description
-Class DateTime
-Enum PackageType
+Class Booking
 
 Class I #FFFFFF
 }
@@ -44,36 +35,30 @@ UserPrefs .up.|> ReadOnlyUserPrefs
 
 AddressBook *--> "1" UniquePersonList
 AddressBook *--> "1" UniqueBookingList
+AddressBook *-[hidden]-> Booking
+
 ' Collections to entities
 UniqueBookingList -down-> "~* all" Booking
+
+UniquePersonList -[hidden]down-> "~* all" Person
 UniquePersonList -down-> "~* all" Person
+UniquePersonList -[hidden]down-> Booking
 
-' Booking attributes (go down from Booking)
-Booking *-down-> PackageType
-Booking *-down-> Description
-Booking *-down-> DateTime
-Booking *-down-> "*" Tag
-Booking *-down-> Name
+Booking "*"-right-> "1" Person
+note right of Booking
+  A Booking object is created based
+  on an existing Person object.
+  It stores a copy of the Person's Name,
+  but does not keep a direct reference to the Person.
+end note
 
-' Person attributes (go down from Person)
-Person *-down-> Name
-Person *-down-> Phone
-Person *-down-> Email
-Person *-down-> Address
-Person *-down-> Status
-Person *-down-> "*" Tag
 
 ' ModelManager filtered relationships - go down to avoid crossing
-ModelManager -down-> "~* modified" Booking
-ModelManager -down-> "~* modified" Person
 
-' Hidden links to organize bottom tier
-PackageType -[hidden]right-> Description
-Description -[hidden]right-> DateTime
-DateTime -[hidden]right-> Name
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Email
-Email -[hidden]right-> Address
+
+ModelManager -[hidden]down-> "~* modified" Person
+ModelManager -down-> "~* modified" Person
+ModelManager --> "~* modified" Booking
 
 Person -[hidden]up-> I
 UniquePersonList -[hidden]right-> I
