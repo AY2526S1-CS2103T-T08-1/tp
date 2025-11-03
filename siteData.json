@@ -132,11 +132,10 @@
     },
     {
       "src": "UserGuide.md",
-      "title": "InSight User Guide",
+      "title": "User Guide",
       "headings": {
         "insight-user-guide": "InSight User Guide",
         "introduction": "📚 Introduction",
-        "introduction-2": "Introduction",
         "table-of-contents": "📖 Table of Contents",
         "quick-start": "⚡ Quick Start",
         "command-reference": "💻 Command Reference",
@@ -149,13 +148,13 @@
         "listing-all-clients-list": "Listing all clients: list",
         "listing-all-bookings-listbooking": "Listing all bookings: listbooking",
         "marking-a-booking-as-paid-markbooking": "Marking a booking as paid: markbooking",
-        "unmarking-a-booking-as-unpaid-unmarkbooking": "Unmarking a booking as unpaid: unmarkbooking",
+        "marking-a-booking-as-unpaid-unmarkbooking": "Marking a booking as unpaid: unmarkbooking",
         "editing-a-client-edit": "Editing a client: edit",
         "editing-a-booking-editbooking": "Editing a booking: editbooking",
         "deleting-a-client-delete": "Deleting a client: delete",
         "deleting-a-booking-deletebooking": "Deleting a booking: deletebooking",
         "finding-clients-find": "Finding clients: find",
-        "viewing-all-bookings-for-a-client-viewbooking": "Viewing all bookings for a client: viewbooking",
+        "view-all-a-client-s-bookings-viewbooking": "View all a Client's Bookings: viewbooking",
         "sorting-clients-sort": "Sorting clients: sort",
         "sorting-bookings-sortbooking": "Sorting bookings: sortbooking",
         "clearing-all-data-clear": "Clearing all data: clear",
@@ -164,12 +163,11 @@
         "glossary": "📚 Glossary",
         "1-client-status": "1. Client Status",
         "2-package-types": "2. Package Types",
-        "3-tag-keywords": "3. Tag Keywords",
+        "3-tag": "3. Tag",
         "4-date-and-amp-time-format": "4. Date &amp; Time Format",
         "5-indexing": "5. Indexing",
         "saving-the-data": "💾 Saving the Data",
-        "faq": "❔ FAQ",
-        "known-issues": "⚠️ Known Issues"
+        "frequently-asked-questions-faq": "❔ Frequently Asked Questions (FAQ)"
       },
       "headingKeywords": {}
     },
