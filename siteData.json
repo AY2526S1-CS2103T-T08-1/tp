@@ -135,6 +135,7 @@
       "title": "InSight User Guide",
       "headings": {
         "insight-user-guide": "InSight User Guide",
+        "introduction": "📚 Introduction",
         "table-of-contents": "📖 Table of Contents",
         "quick-start": "⚡ Quick-Start",
         "command-reference": "💻 Command Reference",
@@ -142,7 +143,7 @@
         "booking-management-commands": "Booking Management Commands",
         "general-commands": "General Commands",
         "features": "🧭 Features",
-        "adding-a-person-add": "Adding a person: add",
+        "adding-a-client-add": "Adding a Client: add",
         "adding-a-booking-addbooking": "Adding a booking: addbooking",
         "listing-all-clients-list": "Listing all clients: list",
         "listing-all-bookings-listbooking": "Listing all bookings: listbooking",
